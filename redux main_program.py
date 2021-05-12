@@ -154,7 +154,7 @@ try:
             #Check if the user is commanding us into a reported object
             print("[DEBUG - STATE] Possibly entering new save state")
             if(object_id):
-                print("[DEBUG - STATE] Entering new save state")
+                print("[DEBUG - STATE] Entering new save state") #Test change
                 #Repair init new state matrix 
                 new_state[1] = True
                 #Command the camera to stop processing inputs temporarily
