@@ -75,6 +75,23 @@ GenerateClassCluster=0
 DocumentUniqueId=LQFTPSZE
 
 [Document3]
+DocumentPath=SoM - PullUp PullDown.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=6
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=RDLLQQXS
+
+[Document4]
 DocumentPath=Power.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -91,7 +108,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=KLNTBNSU
 
-[Document4]
+[Document5]
 DocumentPath=Peripherals - USB.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -108,7 +125,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=CQTEZTCI
 
-[Document5]
+[Document6]
 DocumentPath=Peripherals - MyoSensor.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -125,7 +142,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=CWXTLNWO
 
-[Document6]
+[Document7]
 DocumentPath=Peripherals - Servos.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -142,7 +159,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=FGQAAGRY
 
-[Document7]
+[Document8]
 DocumentPath=SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -159,7 +176,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=CMTYCERR
 
-[Document8]
+[Document9]
 DocumentPath=..\..\..\..\..\..\..\Public\Documents\Altium\Polysat_Partsdb.DbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
