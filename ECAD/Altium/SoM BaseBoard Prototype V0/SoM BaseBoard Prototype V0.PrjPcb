@@ -160,6 +160,23 @@ GenerateClassCluster=0
 DocumentUniqueId=FGQAAGRY
 
 [Document8]
+DocumentPath=Peripherals - Feature Creep.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=7
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=RWMICMEE
+
+[Document9]
 DocumentPath=SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -176,7 +193,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=CMTYCERR
 
-[Document9]
+[Document10]
 DocumentPath=..\..\..\..\..\..\..\Public\Documents\Altium\Polysat_Partsdb.DbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -193,7 +210,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document10]
+[Document11]
 DocumentPath=SoM BaseBoard Prototype V0.OutJob
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -210,7 +227,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document11]
+[Document12]
 DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\LimboticsBaseBoard.Cam
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -227,7 +244,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document12]
+[Document13]
 DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Drills.Cam
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -244,92 +261,213 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
+[Document14]
+DocumentPath=SoM BaseBoard Prototype V0.BomDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=
+
 [GeneratedDocument1]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Design Rule Check - SoM BaseBoard Limbotics Prototype V0PcbDoc.html
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\BOM\Copy of Bill of Materials-SoM BaseBoard Prototype V0.xlsx
 DItemRevisionGUID=
 
 [GeneratedDocument2]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc-RoundHoles.TXT
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Design Rule Check - SoM BaseBoard Limbotics Prototype V0PcbDoc.html
 DItemRevisionGUID=
 
 [GeneratedDocument3]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc-SlotHoles.TXT
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\NC Drill\SoM BaseBoard Limbotics Prototype V0PcbDoc-RoundHoles.TXT
 DItemRevisionGUID=
 
 [GeneratedDocument4]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.DRR
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc-RoundHoles.TXT
 DItemRevisionGUID=
 
 [GeneratedDocument5]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.EXTREP
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\NC Drill\SoM BaseBoard Limbotics Prototype V0PcbDoc-SlotHoles.TXT
 DItemRevisionGUID=
 
 [GeneratedDocument6]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GBL
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc-SlotHoles.TXT
 DItemRevisionGUID=
 
 [GeneratedDocument7]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GBO
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\NC Drill\SoM BaseBoard Limbotics Prototype V0PcbDoc.DRR
 DItemRevisionGUID=
 
 [GeneratedDocument8]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GBP
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.DRR
 DItemRevisionGUID=
 
 [GeneratedDocument9]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GBS
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.EXTREP
 DItemRevisionGUID=
 
 [GeneratedDocument10]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GKO
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.EXTREP
 DItemRevisionGUID=
 
 [GeneratedDocument11]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GM2
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GBL
 DItemRevisionGUID=
 
 [GeneratedDocument12]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GM5
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GBL
 DItemRevisionGUID=
 
 [GeneratedDocument13]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GM20
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GBO
 DItemRevisionGUID=
 
 [GeneratedDocument14]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GP1
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GBO
 DItemRevisionGUID=
 
 [GeneratedDocument15]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GP2
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GBP
 DItemRevisionGUID=
 
 [GeneratedDocument16]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GTL
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GBP
 DItemRevisionGUID=
 
 [GeneratedDocument17]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GTO
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GBS
 DItemRevisionGUID=
 
 [GeneratedDocument18]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GTP
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GBS
 DItemRevisionGUID=
 
 [GeneratedDocument19]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GTS
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GKO
 DItemRevisionGUID=
 
 [GeneratedDocument20]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.LDP
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GKO
 DItemRevisionGUID=
 
 [GeneratedDocument21]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.REP
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GM2
 DItemRevisionGUID=
 
 [GeneratedDocument22]
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GM2
+DItemRevisionGUID=
+
+[GeneratedDocument23]
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GM5
+DItemRevisionGUID=
+
+[GeneratedDocument24]
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GM5
+DItemRevisionGUID=
+
+[GeneratedDocument25]
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GM20
+DItemRevisionGUID=
+
+[GeneratedDocument26]
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GM20
+DItemRevisionGUID=
+
+[GeneratedDocument27]
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GP1
+DItemRevisionGUID=
+
+[GeneratedDocument28]
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GP1
+DItemRevisionGUID=
+
+[GeneratedDocument29]
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GP2
+DItemRevisionGUID=
+
+[GeneratedDocument30]
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GP2
+DItemRevisionGUID=
+
+[GeneratedDocument31]
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GPB
+DItemRevisionGUID=
+
+[GeneratedDocument32]
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GPT
+DItemRevisionGUID=
+
+[GeneratedDocument33]
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GTL
+DItemRevisionGUID=
+
+[GeneratedDocument34]
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GTL
+DItemRevisionGUID=
+
+[GeneratedDocument35]
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GTO
+DItemRevisionGUID=
+
+[GeneratedDocument36]
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GTO
+DItemRevisionGUID=
+
+[GeneratedDocument37]
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GTP
+DItemRevisionGUID=
+
+[GeneratedDocument38]
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GTP
+DItemRevisionGUID=
+
+[GeneratedDocument39]
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GTS
+DItemRevisionGUID=
+
+[GeneratedDocument40]
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.GTS
+DItemRevisionGUID=
+
+[GeneratedDocument41]
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\DRC\SoM BaseBoard Limbotics Prototype V0PcbDoc.html
+DItemRevisionGUID=
+
+[GeneratedDocument42]
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\NC Drill\SoM BaseBoard Limbotics Prototype V0PcbDoc.LDP
+DItemRevisionGUID=
+
+[GeneratedDocument43]
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.LDP
+DItemRevisionGUID=
+
+[GeneratedDocument44]
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.REP
+DItemRevisionGUID=
+
+[GeneratedDocument45]
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.REP
+DItemRevisionGUID=
+
+[GeneratedDocument46]
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.RUL
+DItemRevisionGUID=
+
+[GeneratedDocument47]
 DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.RUL
+DItemRevisionGUID=
+
+[GeneratedDocument48]
+DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\ExportSTEP\SoM BaseBoard Limbotics Prototype V0PcbDoc.step
 DItemRevisionGUID=
 
 [Configuration1]

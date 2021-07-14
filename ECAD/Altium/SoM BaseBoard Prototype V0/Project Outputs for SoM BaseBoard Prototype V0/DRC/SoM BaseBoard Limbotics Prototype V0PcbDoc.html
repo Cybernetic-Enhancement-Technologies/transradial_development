@@ -1,0 +1,620 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+        h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+            padding: 0.3em;
+        }
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+        body {
+			font-family : segoe ui;
+        }
+
+        td, th {
+            padding: 0.5em;
+			text-align : left;
+			width: 10em;
+        }
+        th {
+			background-color : #EEEEEE;
+
+        }
+        th.column1, td.column1 {
+            text-align: left;
+            width : auto;
+        }
+        table {
+            width : 100%;
+			font-size: 0.9em;
+        }
+        
+        .DRC_summary_header {                           
+            padding-bottom : 0.1em;
+            border : 0px solid black;                           
+            width: 100%;
+			align: left;
+        }
+
+        .DRC_summary_header_col1, 
+        .DRC_summary_header_col2, 
+        .DRC_summary_header_col3  {
+            color : black;
+            font-size:100%;
+                        padding : 0em;
+            padding-top : 0.2em;
+            padding-bottom 0.2em;
+            border : 0px solid black;
+            vertical-align: top;
+			text-align: left;
+        }
+        
+        .DRC_summary_header_col1 {                              
+			font-weight: bold;
+			width: 8em;
+        }
+
+        .DRC_summary_header_col2 {       
+			width: 0.1em;
+		
+        }
+
+        .DRC_summary_header_col3 {       
+			width : auto;
+        }
+
+        .header_holder  {
+        Width = 100%;
+        border = 0px solid green;
+        padding = 0;
+        }
+        
+        
+        .front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+                {
+            left:0;
+            top:0;
+			padding: 0em;
+            padding-top : 0.1em;            
+            border : 0px solid black;
+            width : 100%;
+            vertical-align: top;
+            text-align: left;
+        }
+
+        .front_matter_column1 {
+            width : 8em;   
+			font-weight: bold;
+        }
+        
+        .front_matter_column2 {
+            width: 0.1em;
+        }
+
+        .front_matter_column3 {
+            width         : auto;  
+        }
+        
+        .total_column1, .total_column {
+            font-weight : bold;
+        }
+        .total_column1 {
+			text-align : left;
+        }
+        .warning, .error {
+            color : red;
+            font-weight : bold;
+        }
+        tr.onmouseout_odd {
+			background-color : #white;
+        }
+        tr.onmouseout_even { 
+			background-color : #FAFAFA;
+        }
+        tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+        } 
+        a:link, a:visited, .q a:link,.q a:active,.q {
+            color: #21489e; 
+        }
+        a:link.callback, a:visited.callback { 
+            color: #21489e; 
+        }
+        p.contents_level1 {
+            font-weight : bold;
+            font-size : 110%;
+            margin : 0.5em;
+        }
+        p.contents_level2 {
+            position : relative;
+            left : 20px;
+            margin : 0.5em;
+        }
+    </style><script type="text/javascript">
+        function coordToMils(coord) {
+            var number = coord / 10000;
+            
+            if (number != number.toFixed(3))
+                number = number.toFixed(3);
+
+            return number + 'mil'
+        }
+
+        function coordToMM(coord) {
+            var number = 0.0254 * coord / 10000;
+            
+            if (number != number.toFixed(4))
+                number = number.toFixed(4);
+            
+            return number + 'mm'
+        }
+    
+        function convertCoord(coordNode, units) {
+            for (var i = 0; i < coordNode.childNodes.length; i++) {
+                coordNode.removeChild(coordNode.childNodes[i]);
+            }
+
+            var coord = coordNode.getAttribute('value');
+            if (coord != null) {
+                if (units == 'mm') {
+                    textNode = document.createTextNode(coordToMM(coord));
+                    coordNode.appendChild(textNode);
+                } else if (units == 'mil') {
+                    textNode = document.createTextNode(coordToMils(coord));     
+                    coordNode.appendChild(textNode);    
+                }
+            }
+        }
+    
+        function convertUnits(unitNode, units) {
+            for (var i = 0; i < unitNode.childNodes.length; i++) {
+                unitNode.removeChild(unitNode.childNodes[i]);       
+            }
+        
+            textNode = document.createTextNode(units); 
+            unitNode.appendChild(textNode);
+        }
+    
+        function changeUnits(radio_input, units) {
+            if (radio_input.checked) {
+            
+                var elements = document.getElementsByName('coordinate');
+                if (elements) {
+                    for (var i = 0; i < elements.length; i++) {
+                        convertCoord(elements[i], units);
+                    }
+                }
+    
+                var elements = document.getElementsByName('units');
+                if (elements) {
+                    for (var i = 0; i < elements.length; i++) {
+                        convertUnits(elements[i], units);
+                    }
+                }
+            }
+        }
+    </script></head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD21\Templates\AD_logo.png
+        "><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">7/14/2021</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">11:34:45 AM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc" class="file"><acronym title="C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc">C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">94</td></tr>
+</table>
+</td>
+</table><a name="IDVYAXFNDWYJNHBVZMVQDGNCO0QJF0MF4XETAWJFNKZU33BIEWY1GN"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDQWNMGG3VFO4TPCXEC4KRWHTZNDJCLMGOGB4N2LD2SGMGPS31UZ2D">Clearance Constraint (Gap=4mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDYN0ZAV3M1AQTPYPDUNHIGXTOOPVQZNW0E03JXPCZ452YNSLNYQIC">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDH5J0GJWVF20PKNMVJR1Q1BTV0OE1PWE52BEUHQLWP2K5Z5GMWR0C">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDXOBZBNFXGG0UHJABIRPHPKTEPEZF2I1ZYNK0HLPQDOFUO041AHOD">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDVNVN4PTXHIBFDMXPF1BOMMBFSIZGXJWXJXOACHENPQEZYBXMKLP">Width Constraint (Min=4mil) (Max=71497.938mil) (Preferred=10mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDVETF0ZVBGME4DULAIDN5MB5YNJOGZFOJ22SHP0C2TG3YJIQLBSOP">Power Plane Connect Rule(Relief Connect )(Expansion=11.811mil) (Conductor Width=4mil) (Air Gap=4mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDVQCXTU2SCXXMKEKHXP4UO5DWBHF05FEZWVTVS5FBCFELW4Q14PVK">Power Plane Connect Rule(Direct Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (InPadClass('PowerPads'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDODVPLQARHAYMIVNT135WCWQU4NPOH0A2VES0U2OBSZQIVSZUATZG">Minimum Annular Ring (Minimum=3mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDBACMCQU5PY5TOBVR5YTZBJIY1KOILY5AXKUO4GEWRB11E1DOXUXF">Hole Size Constraint (Min=7.874mil) (Max=248.031mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDKHLYXWUFDOAYJNVNVAR3Y5CERDVR2RQMZYHMN3WU3Y1YEA3ZTZG">Hole To Hole Clearance (Gap=9.842mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDSNCEZOSC45AFCD5ZCVGEZXU5TGMAXTFTJHXMK3FJHEMNVRDVGZTJ">Minimum Solder Mask Sliver (Gap=0mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDBQXK4KTY2WN2O4BJYJR3W1KBJKJYMG52530KDRFLG0FNWGT4PCBF">Silk To Solder Mask (Clearance=4mil) (IsPad),(All)</a></td>
+<td class="column2">76</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDOM5WB1NRHOQ0ENV1SNKE12L2XLIO3EBZHT3EL2E0CLLM5DD2A0L">Silk to Silk (Clearance=0mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDRAQXDAZBE2UQ3WMECPPGI20OHKV5WAEVO1H4ME5BQ4PBH3QYI5M">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDUIDJQ0GJKHQPNVIDKAD0WY1VKCFOFFR1XR2ZWGI5SDNYD5KAHD4B">Board Clearance Constraint (Gap=0mil) (All)</a></td>
+<td class="column2">18</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDP03WSKCKZ3XMOO3ALWSWUC5GVB2R0DKV12NGK3MKFRSDV0WJCPNI">Height Constraint (Min=0mil) (Max=71497.938mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">94</td>
+</tr>
+</table><br><a name="IDBQXK4KTY2WN2O4BJYJR3W1KBJKJYMG52530KDRFLG0FNWGT4PCBF"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=4mil) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3296.592mil|Location2.X=3300.258mil|Location1.Y=1893.797mil|Location2.Y=1897.463mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3296.592mil|Location2.X=3300.258mil|Location1.Y=1893.797mil|Location2.Y=1897.463mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 4mil) Between Arc (3193.504mil,895.63mil) on Top Overlay And Pad C20-2(3200mil,904.41mil) on Top Layer [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=670.981mil|Location2.X=677.777mil|Location1.Y=1978.688mil|Location2.Y=1985.983mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=670.981mil|Location2.X=677.777mil|Location1.Y=1978.688mil|Location2.Y=1985.983mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (3.284mil &lt; 4mil) Between Pad C10-1(593.74mil,950mil) on Top Layer And Text "C10" (520.008mil,980.003mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [3.284mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2929.068mil|Location2.X=2934.318mil|Location1.Y=1495.053mil|Location2.Y=1500.303mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2929.068mil|Location2.X=2934.318mil|Location1.Y=1495.053mil|Location2.Y=1500.303mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.181mil &lt; 4mil) Between Pad C1-1(2850mil,514.41mil) on Top Layer And Track (2829.134mil,0mil)(2829.134mil,1614.173mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.181mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2929.068mil|Location2.X=2934.318mil|Location1.Y=1546.233mil|Location2.Y=1551.483mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2929.068mil|Location2.X=2934.318mil|Location1.Y=1546.233mil|Location2.Y=1551.483mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.181mil &lt; 4mil) Between Pad C1-2(2850mil,565.59mil) on Top Layer And Track (2829.134mil,0mil)(2829.134mil,1614.173mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.181mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4252.844mil|Location2.X=4256.511mil|Location1.Y=2978.167mil|Location2.Y=2981.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4252.844mil|Location2.X=4256.511mil|Location1.Y=2978.167mil|Location2.Y=2981.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 4mil) Between Pad C27-1(4141.181mil,1990mil) on Bottom Layer And Text "C26" (4188mil,1980mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2857.611mil|Location2.X=2862.861mil|Location1.Y=2190.878mil|Location2.Y=2196.128mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2857.611mil|Location2.X=2862.861mil|Location1.Y=2190.878mil|Location2.Y=2196.128mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.968mil &lt; 4mil) Between Pad J1310-1(2762.992mil,1188.582mil) on Top Layer And Track (2760.236mil,1196.456mil)(2760.236mil,1247.638mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.968mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2741.863mil|Location2.X=2747.113mil|Location1.Y=1409.384mil|Location2.Y=1414.634mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2741.863mil|Location2.X=2747.113mil|Location1.Y=1409.384mil|Location2.Y=1414.634mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.968mil &lt; 4mil) Between Pad J1310-100(2641.732mil,416.93mil) on Top Layer And Track (2644.488mil,357.874mil)(2644.488mil,409.056mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.968mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2741.863mil|Location2.X=2747.113mil|Location1.Y=2190.878mil|Location2.Y=2196.128mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2741.863mil|Location2.X=2747.113mil|Location1.Y=2190.878mil|Location2.Y=2196.128mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.968mil &lt; 4mil) Between Pad J1310-2(2641.732mil,1188.582mil) on Top Layer And Track (2644.488mil,1196.456mil)(2644.488mil,1247.638mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.968mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2857.611mil|Location2.X=2862.861mil|Location1.Y=1409.384mil|Location2.Y=1414.634mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2857.611mil|Location2.X=2862.861mil|Location1.Y=1409.384mil|Location2.Y=1414.634mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.968mil &lt; 4mil) Between Pad J1310-99(2762.992mil,416.93mil) on Top Layer And Track (2760.236mil,357.874mil)(2760.236mil,409.056mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.968mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2579.068mil|Location2.X=2584.318mil|Location1.Y=2450.131mil|Location2.Y=2455.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2579.068mil|Location2.X=2584.318mil|Location1.Y=2450.131mil|Location2.Y=2455.381mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.968mil &lt; 4mil) Between Pad J1311-1(2476.772mil,1450mil) on Top Layer And Track (2484.646mil,1452.756mil)(2535.826mil,1452.756mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.968mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1797.572mil|Location2.X=1802.822mil|Location1.Y=2565.879mil|Location2.Y=2571.129mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1797.572mil|Location2.X=1802.822mil|Location1.Y=2565.879mil|Location2.Y=2571.129mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.968mil &lt; 4mil) Between Pad J1311-100(1705.118mil,1571.26mil) on Top Layer And Track (1646.064mil,1568.504mil)(1697.244mil,1568.504mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.968mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2579.068mil|Location2.X=2584.318mil|Location1.Y=2565.879mil|Location2.Y=2571.129mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2579.068mil|Location2.X=2584.318mil|Location1.Y=2565.879mil|Location2.Y=2571.129mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.968mil &lt; 4mil) Between Pad J1311-2(2476.772mil,1571.26mil) on Top Layer And Track (2484.646mil,1568.504mil)(2535.826mil,1568.504mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.968mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1797.572mil|Location2.X=1802.822mil|Location1.Y=2450.131mil|Location2.Y=2455.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1797.572mil|Location2.X=1802.822mil|Location1.Y=2450.131mil|Location2.Y=2455.381mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.968mil &lt; 4mil) Between Pad J1311-99(1705.118mil,1450mil) on Top Layer And Track (1646.064mil,1452.756mil)(1697.244mil,1452.756mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.968mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1349.737mil|Location2.X=1354.987mil|Location1.Y=2190.878mil|Location2.Y=2196.128mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1349.737mil|Location2.X=1354.987mil|Location1.Y=2190.878mil|Location2.Y=2196.128mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.968mil &lt; 4mil) Between Pad J1312-1(1255.118mil,1188.582mil) on Top Layer And Track (1252.362mil,1196.456mil)(1252.362mil,1247.638mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.968mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=2119.028mil|Location2.Y=2124.278mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=2119.028mil|Location2.Y=2124.278mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-10(1133.858mil,1125.59mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1233.989mil|Location2.X=1239.239mil|Location1.Y=1409.384mil|Location2.Y=1414.634mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1233.989mil|Location2.X=1239.239mil|Location1.Y=1409.384mil|Location2.Y=1414.634mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.968mil &lt; 4mil) Between Pad J1312-100(1133.858mil,416.93mil) on Top Layer And Track (1136.614mil,357.874mil)(1136.614mil,409.056mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.968mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=2103.28mil|Location2.Y=2108.53mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=2103.28mil|Location2.Y=2108.53mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-12(1133.858mil,1109.842mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=2087.532mil|Location2.Y=2092.782mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=2087.532mil|Location2.Y=2092.782mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-14(1133.858mil,1094.094mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=2071.784mil|Location2.Y=2077.034mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=2071.784mil|Location2.Y=2077.034mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-16(1133.858mil,1078.346mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=2056.036mil|Location2.Y=2061.286mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=2056.036mil|Location2.Y=2061.286mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-18(1133.858mil,1062.598mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=2182.02mil|Location2.Y=2187.27mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=2182.02mil|Location2.Y=2187.27mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-2(1133.858mil,1188.582mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1233.989mil|Location2.X=1239.239mil|Location1.Y=2190.878mil|Location2.Y=2196.128mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1233.989mil|Location2.X=1239.239mil|Location1.Y=2190.878mil|Location2.Y=2196.128mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.968mil &lt; 4mil) Between Pad J1312-2(1133.858mil,1188.582mil) on Top Layer And Track (1136.614mil,1196.456mil)(1136.614mil,1247.638mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.968mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=2040.288mil|Location2.Y=2045.538mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=2040.288mil|Location2.Y=2045.538mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-20(1133.858mil,1046.85mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=2024.54mil|Location2.Y=2029.79mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=2024.54mil|Location2.Y=2029.79mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-22(1133.858mil,1031.102mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=2008.792mil|Location2.Y=2014.042mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=2008.792mil|Location2.Y=2014.042mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-24(1133.858mil,1015.354mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1993.044mil|Location2.Y=1998.294mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1993.044mil|Location2.Y=1998.294mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-26(1133.858mil,999.606mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1977.296mil|Location2.Y=1982.546mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1977.296mil|Location2.Y=1982.546mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-28(1133.858mil,983.858mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1961.548mil|Location2.Y=1966.798mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1961.548mil|Location2.Y=1966.798mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-30(1133.858mil,968.11mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1945.8mil|Location2.Y=1951.05mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1945.8mil|Location2.Y=1951.05mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-32(1133.858mil,952.362mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1930.052mil|Location2.Y=1935.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1930.052mil|Location2.Y=1935.302mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-34(1133.858mil,936.614mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1914.304mil|Location2.Y=1919.554mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1914.304mil|Location2.Y=1919.554mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-36(1133.858mil,920.866mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1898.556mil|Location2.Y=1903.806mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1898.556mil|Location2.Y=1903.806mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-38(1133.858mil,905.118mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=2166.272mil|Location2.Y=2171.522mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=2166.272mil|Location2.Y=2171.522mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-4(1133.858mil,1172.834mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1882.808mil|Location2.Y=1888.058mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1882.808mil|Location2.Y=1888.058mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-40(1133.858mil,889.37mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1867.06mil|Location2.Y=1872.31mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1867.06mil|Location2.Y=1872.31mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-42(1133.858mil,873.622mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1851.312mil|Location2.Y=1856.562mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1851.312mil|Location2.Y=1856.562mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-44(1133.858mil,857.874mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1835.564mil|Location2.Y=1840.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1835.564mil|Location2.Y=1840.814mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-46(1133.858mil,842.126mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1819.816mil|Location2.Y=1825.066mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1819.816mil|Location2.Y=1825.066mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-48(1133.858mil,826.378mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1804.068mil|Location2.Y=1809.318mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1804.068mil|Location2.Y=1809.318mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-50(1133.858mil,810.63mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1788.32mil|Location2.Y=1793.57mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1788.32mil|Location2.Y=1793.57mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-52(1133.858mil,794.882mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1772.572mil|Location2.Y=1777.822mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1772.572mil|Location2.Y=1777.822mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-54(1133.858mil,779.134mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1756.824mil|Location2.Y=1762.074mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1756.824mil|Location2.Y=1762.074mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-56(1133.858mil,763.386mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1741.076mil|Location2.Y=1746.326mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1741.076mil|Location2.Y=1746.326mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-58(1133.858mil,747.638mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=2150.524mil|Location2.Y=2155.774mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=2150.524mil|Location2.Y=2155.774mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-6(1133.858mil,1157.086mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1725.328mil|Location2.Y=1730.578mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1725.328mil|Location2.Y=1730.578mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-60(1133.858mil,731.89mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1709.58mil|Location2.Y=1714.83mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1709.58mil|Location2.Y=1714.83mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-62(1133.858mil,716.142mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1693.832mil|Location2.Y=1699.082mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1693.832mil|Location2.Y=1699.082mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-64(1133.858mil,700.394mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1678.084mil|Location2.Y=1683.334mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1678.084mil|Location2.Y=1683.334mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-66(1133.858mil,684.646mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1662.336mil|Location2.Y=1667.586mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1662.336mil|Location2.Y=1667.586mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-68(1133.858mil,668.898mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1646.588mil|Location2.Y=1651.838mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1646.588mil|Location2.Y=1651.838mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-70(1133.858mil,653.15mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1630.84mil|Location2.Y=1636.09mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1630.84mil|Location2.Y=1636.09mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-72(1133.858mil,637.402mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1615.092mil|Location2.Y=1620.342mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1615.092mil|Location2.Y=1620.342mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-74(1133.858mil,621.654mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1599.344mil|Location2.Y=1604.594mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1599.344mil|Location2.Y=1604.594mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-76(1133.858mil,605.906mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1583.596mil|Location2.Y=1588.846mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1583.596mil|Location2.Y=1588.846mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-78(1133.858mil,590.158mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=2134.776mil|Location2.Y=2140.026mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=2134.776mil|Location2.Y=2140.026mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-8(1133.858mil,1141.338mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1567.848mil|Location2.Y=1573.098mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1567.848mil|Location2.Y=1573.098mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-80(1133.858mil,574.41mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1552.1mil|Location2.Y=1557.35mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1552.1mil|Location2.Y=1557.35mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-82(1133.858mil,558.662mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1536.352mil|Location2.Y=1541.602mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1536.352mil|Location2.Y=1541.602mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-84(1133.858mil,542.914mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1520.604mil|Location2.Y=1525.854mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1520.604mil|Location2.Y=1525.854mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-86(1133.858mil,527.166mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1504.856mil|Location2.Y=1510.106mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1504.856mil|Location2.Y=1510.106mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-88(1133.858mil,511.418mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1489.108mil|Location2.Y=1494.358mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1489.108mil|Location2.Y=1494.358mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-90(1133.858mil,495.67mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1473.36mil|Location2.Y=1478.61mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1473.36mil|Location2.Y=1478.61mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-92(1133.858mil,479.922mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1457.612mil|Location2.Y=1462.862mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1457.612mil|Location2.Y=1462.862mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-94(1133.858mil,464.174mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1441.864mil|Location2.Y=1447.114mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1441.864mil|Location2.Y=1447.114mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-96(1133.858mil,448.426mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1368.123mil|Location2.X=1373.373mil|Location1.Y=1426.116mil|Location2.Y=1431.366mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1368.123mil|Location2.X=1373.373mil|Location1.Y=1426.116mil|Location2.Y=1431.366mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (3.701mil &lt; 4mil) Between Pad J1312-97(1255.118mil,432.678mil) on Top Layer And Track (1276.536mil,368.504mil)(1276.536mil,431.496mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [3.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1433.99mil|Location2.Y=1439.24mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1433.99mil|Location2.Y=1439.24mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-98(1133.858mil,432.678mil) on Top Layer And Track (1116.536mil,433.07mil)(1116.536mil,1259.842mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1430.445mil|Location2.Y=1435.695mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1216.667mil|Location2.X=1221.917mil|Location1.Y=1430.445mil|Location2.Y=1435.695mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.574mil &lt; 4mil) Between Pad J1312-98(1133.858mil,432.678mil) on Top Layer And Track (900mil,433.07mil)(1116.536mil,433.07mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.574mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1349.737mil|Location2.X=1354.987mil|Location1.Y=1409.384mil|Location2.Y=1414.634mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1349.737mil|Location2.X=1354.987mil|Location1.Y=1409.384mil|Location2.Y=1414.634mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.968mil &lt; 4mil) Between Pad J1312-99(1255.118mil,416.93mil) on Top Layer And Track (1252.362mil,357.874mil)(1252.362mil,409.056mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.968mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1368.123mil|Location2.X=1373.373mil|Location1.Y=1410.368mil|Location2.Y=1415.618mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1368.123mil|Location2.X=1373.373mil|Location1.Y=1410.368mil|Location2.Y=1415.618mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (3.701mil &lt; 4mil) Between Pad J1312-99(1255.118mil,416.93mil) on Top Layer And Track (1276.536mil,368.504mil)(1276.536mil,431.496mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [3.701mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4330.779mil|Location2.X=4336.029mil|Location1.Y=2742.857mil|Location2.Y=2748.107mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4330.779mil|Location2.X=4336.029mil|Location1.Y=2742.857mil|Location2.Y=2748.107mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.952mil &lt; 4mil) Between Pad L1-1(4218.148mil,1784.852mil) on Top Layer And Track (4236.848mil,1737.608mil)(4236.848mil,1832.096mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [2.952mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4243.18mil|Location2.X=4248.43mil|Location1.Y=2742.857mil|Location2.Y=2748.107mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4243.18mil|Location2.X=4248.43mil|Location1.Y=2742.857mil|Location2.Y=2748.107mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.952mil &lt; 4mil) Between Pad L1-2(4161.06mil,1784.852mil) on Top Layer And Track (4142.36mil,1737.608mil)(4142.36mil,1832.096mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [2.952mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4192.844mil|Location2.X=4196.511mil|Location1.Y=3038.167mil|Location2.Y=3041.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4192.844mil|Location2.X=4196.511mil|Location1.Y=3038.167mil|Location2.Y=3041.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 4mil) Between Pad Q2-3(4095mil,2047.598mil) on Bottom Layer And Text "C27" (4128mil,2040mil) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=664.672mil|Location2.X=669.922mil|Location1.Y=2227.378mil|Location2.Y=2232.628mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=664.672mil|Location2.X=669.922mil|Location1.Y=2227.378mil|Location2.Y=2232.628mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.421mil &lt; 4mil) Between Pad R10-1(548.386mil,1250mil) on Top Layer And Text "R10" (570.008mil,1230.003mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.421mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=635.714mil|Location2.X=640.964mil|Location1.Y=2216.852mil|Location2.Y=2222.102mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=635.714mil|Location2.X=640.964mil|Location1.Y=2216.852mil|Location2.Y=2222.102mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (3.96mil &lt; 4mil) Between Pad R10-1(548.386mil,1250mil) on Top Layer And Text "R9" (538.339mil,1195.003mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [3.96mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=941.512mil|Location2.X=945.179mil|Location1.Y=1778.164mil|Location2.Y=1781.83mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=941.512mil|Location2.X=945.179mil|Location1.Y=1778.164mil|Location2.Y=1781.83mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 4mil) Between Pad TP30-1(830mil,770mil) on Top Layer And Text "TP37" (843.345mil,760.003mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=885.167mil|Location2.X=888.833mil|Location1.Y=1671.16mil|Location2.Y=1674.827mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=885.167mil|Location2.X=888.833mil|Location1.Y=1671.16mil|Location2.Y=1674.827mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 4mil) Between Pad TP37-1(800mil,690mil) on Top Layer And Text "TP36" (787mil,653mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDUIDJQ0GJKHQPNVIDKAD0WY1VKCFOFFR1XR2ZWGI5SDNYD5KAHD4B"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Board Clearance Constraint (Gap=0mil) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3300.025mil|Location2.X=3306.274mil|Location1.Y=894.047mil|Location2.Y=900.296mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3300.025mil|Location2.X=3306.274mil|Location1.Y=894.047mil|Location2.Y=900.296mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 7.874mil) Between Arc (3203.15mil,-100.945mil) on Top Overlay And Board Edge </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3300.025mil|Location2.X=3306.274mil|Location1.Y=897.814mil|Location2.Y=904.063mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3300.025mil|Location2.X=3306.274mil|Location1.Y=897.814mil|Location2.Y=904.063mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 7.874mil) Between Arc (3203.15mil,-100.945mil) on Top Overlay And Board Edge </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3300.025mil|Location2.X=3306.274mil|Location1.Y=3325.937mil|Location2.Y=3332.186mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3300.025mil|Location2.X=3306.274mil|Location1.Y=3325.937mil|Location2.Y=3332.186mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 7.874mil) Between Arc (3203.15mil,2330.945mil) on Top Overlay And Board Edge </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3300.025mil|Location2.X=3306.274mil|Location1.Y=3329.704mil|Location2.Y=3335.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3300.025mil|Location2.X=3306.274mil|Location1.Y=3329.704mil|Location2.Y=3335.953mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 7.874mil) Between Arc (3203.15mil,2330.945mil) on Top Overlay And Board Edge </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2285.753mil|Location2.X=2292.003mil|Location1.Y=996.708mil|Location2.Y=1002.957mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2285.753mil|Location2.X=2292.003mil|Location1.Y=996.708mil|Location2.Y=1002.957mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 7.874mil) Between Board Edge And Region (15 hole(s)) Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2045.438mil|Location2.X=2054.562mil|Location1.Y=995.438mil|Location2.Y=1004.562mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2045.438mil|Location2.X=2054.562mil|Location1.Y=995.438mil|Location2.Y=1004.562mil|Absolute=True">Board Outline Clearance(Outline Edge): (0mil &lt; 7.874mil) Between Board Edge And Text "1.5mm Max Height" (1956mil,12.665mil) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1180.438mil|Location2.X=1189.562mil|Location1.Y=995.438mil|Location2.Y=1004.562mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1180.438mil|Location2.X=1189.562mil|Location1.Y=995.438mil|Location2.Y=1004.562mil|Absolute=True">Board Outline Clearance(Outline Edge): (0mil &lt; 7.874mil) Between Board Edge And Text "2.8mm Max Height" (1091mil,12.665mil) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=495.446mil|Location2.X=504.57mil|Location1.Y=3222.11mil|Location2.Y=3231.234mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=495.446mil|Location2.X=504.57mil|Location1.Y=3222.11mil|Location2.Y=3231.234mil|Absolute=True">Board Outline Clearance(Outline Edge): (3.35mil &lt; 7.874mil) Between Board Edge And Text "C15" (405.008mil,2200.003mil) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=390.446mil|Location2.X=399.57mil|Location1.Y=3222.11mil|Location2.Y=3231.234mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=390.446mil|Location2.X=399.57mil|Location1.Y=3222.11mil|Location2.Y=3231.234mil|Absolute=True">Board Outline Clearance(Outline Edge): (3.35mil &lt; 7.874mil) Between Board Edge And Text "C16" (300.008mil,2200.003mil) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1174.041mil|Location2.X=1180.291mil|Location1.Y=995.522mil|Location2.Y=1001.771mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1174.041mil|Location2.X=1180.291mil|Location1.Y=995.522mil|Location2.Y=1001.771mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 7.874mil) Between Board Edge And Track (1077.166mil,0mil)(1077.166mil,108.268mil) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2040.183mil|Location2.X=2046.433mil|Location1.Y=995.522mil|Location2.Y=1001.771mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2040.183mil|Location2.X=2046.433mil|Location1.Y=995.522mil|Location2.Y=1001.771mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 7.874mil) Between Board Edge And Track (1943.308mil,0mil)(1943.308mil,108.268mil) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2926.009mil|Location2.X=2932.258mil|Location1.Y=995.81mil|Location2.Y=1002.059mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2926.009mil|Location2.X=2932.258mil|Location1.Y=995.81mil|Location2.Y=1002.059mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 7.874mil) Between Board Edge And Track (2829.134mil,0mil)(2829.134mil,1614.173mil) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3141.108mil|Location2.X=3150.232mil|Location1.Y=3219.966mil|Location2.Y=3229.09mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3141.108mil|Location2.X=3150.232mil|Location1.Y=3219.966mil|Location2.Y=3229.09mil|Absolute=True">Board Outline Clearance(Outline Edge): (7.638mil &lt; 7.874mil) Between Board Edge And Track (3045.67mil,2218.74mil)(3360.63mil,2218.74mil) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=66.479mil|Location2.X=72.728mil|Location1.Y=2398.915mil|Location2.Y=2405.164mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=66.479mil|Location2.X=72.728mil|Location1.Y=2398.915mil|Location2.Y=2405.164mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 7.874mil) Between Board Edge And Track (-58.662mil,1401.968mil)(264.174mil,1402.756mil) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=38.213mil|Location2.X=44.463mil|Location1.Y=2657.111mil|Location2.Y=2663.361mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=38.213mil|Location2.X=44.463mil|Location1.Y=2657.111mil|Location2.Y=2663.361mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 7.874mil) Between Board Edge And Track (-58.662mil,1401.968mil)(-58.662mil,1918.504mil) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=66.479mil|Location2.X=72.728mil|Location1.Y=2915.379mil|Location2.Y=2921.629mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=66.479mil|Location2.X=72.728mil|Location1.Y=2915.379mil|Location2.Y=2921.629mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 7.874mil) Between Board Edge And Track (-58.662mil,1918.504mil)(264.174mil,1918.504mil) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1961.442mil|Location2.X=1967.691mil|Location1.Y=995.81mil|Location2.Y=1002.059mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1961.442mil|Location2.X=1967.691mil|Location1.Y=995.81mil|Location2.Y=1002.059mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 7.874mil) Between Board Edge And Track (900mil,0mil)(2829.134mil,0mil) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=996.875mil|Location2.X=1003.125mil|Location1.Y=995.81mil|Location2.Y=1002.059mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\keepi\Downloads\Limbotics\transradial_development\ECAD\Altium\SoM BaseBoard Prototype V0\SoM BaseBoard Limbotics Prototype V0PcbDoc.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=996.875mil|Location2.X=1003.125mil|Location1.Y=995.81mil|Location2.Y=1002.059mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 7.874mil) Between Board Edge And Track (900mil,0mil)(900mil,1614.173mil) on Top Overlay </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
