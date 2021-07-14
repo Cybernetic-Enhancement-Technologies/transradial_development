@@ -1,4 +1,5 @@
 Record=TopLevelDocument|FileName=Overview.SchDoc|SheetNumber=1
+Record=NoMainPathDocument|SourceDocument=Overview.SchDoc|FileName=Peripherals - Feature Creep.SchDoc|SheetNumber=8
 Record=NoMainPathDocument|SourceDocument=Overview.SchDoc|FileName=Peripherals - MyoSensor.SchDoc|SheetNumber=6
 Record=NoMainPathDocument|SourceDocument=Overview.SchDoc|FileName=Peripherals - Servos.SchDoc|SheetNumber=7
 Record=NoMainPathDocument|SourceDocument=Overview.SchDoc|FileName=Peripherals - USB.SchDoc|SheetNumber=5
