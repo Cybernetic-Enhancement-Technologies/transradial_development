@@ -194,40 +194,6 @@ GenerateClassCluster=0
 DocumentUniqueId=CMTYCERR
 
 [Document10]
-DocumentPath=..\..\..\..\..\..\..\Public\Documents\Altium\Polysat_Partsdb.DbLib
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=
-
-[Document11]
-DocumentPath=SoM BaseBoard Prototype V0.OutJob
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=
-
-[Document12]
 DocumentPath=SoM BaseBoard Prototype V0.BomDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -249,102 +215,10 @@ DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\BOM\Copy of Bill of 
 DItemRevisionGUID=
 
 [GeneratedDocument2]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\NC Drill\SoM BaseBoard Limbotics Prototype V0PcbDoc-RoundHoles.TXT
-DItemRevisionGUID=
-
-[GeneratedDocument3]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\NC Drill\SoM BaseBoard Limbotics Prototype V0PcbDoc-SlotHoles.TXT
-DItemRevisionGUID=
-
-[GeneratedDocument4]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\NC Drill\SoM BaseBoard Limbotics Prototype V0PcbDoc.DRR
-DItemRevisionGUID=
-
-[GeneratedDocument5]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.EXTREP
-DItemRevisionGUID=
-
-[GeneratedDocument6]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GBL
-DItemRevisionGUID=
-
-[GeneratedDocument7]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GBO
-DItemRevisionGUID=
-
-[GeneratedDocument8]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GBP
-DItemRevisionGUID=
-
-[GeneratedDocument9]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GBS
-DItemRevisionGUID=
-
-[GeneratedDocument10]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GKO
-DItemRevisionGUID=
-
-[GeneratedDocument11]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GM2
-DItemRevisionGUID=
-
-[GeneratedDocument12]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GM5
-DItemRevisionGUID=
-
-[GeneratedDocument13]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GM20
-DItemRevisionGUID=
-
-[GeneratedDocument14]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GP1
-DItemRevisionGUID=
-
-[GeneratedDocument15]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GP2
-DItemRevisionGUID=
-
-[GeneratedDocument16]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GPB
-DItemRevisionGUID=
-
-[GeneratedDocument17]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GPT
-DItemRevisionGUID=
-
-[GeneratedDocument18]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GTL
-DItemRevisionGUID=
-
-[GeneratedDocument19]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GTO
-DItemRevisionGUID=
-
-[GeneratedDocument20]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GTP
-DItemRevisionGUID=
-
-[GeneratedDocument21]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.GTS
-DItemRevisionGUID=
-
-[GeneratedDocument22]
 DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\DRC\SoM BaseBoard Limbotics Prototype V0PcbDoc.html
 DItemRevisionGUID=
 
-[GeneratedDocument23]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\NC Drill\SoM BaseBoard Limbotics Prototype V0PcbDoc.LDP
-DItemRevisionGUID=
-
-[GeneratedDocument24]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.REP
-DItemRevisionGUID=
-
-[GeneratedDocument25]
-DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\Gerber\SoM BaseBoard Limbotics Prototype V0PcbDoc.RUL
-DItemRevisionGUID=
-
-[GeneratedDocument26]
+[GeneratedDocument3]
 DocumentPath=Project Outputs for SoM BaseBoard Prototype V0\ExportSTEP\SoM BaseBoard Limbotics Prototype V0PcbDoc.step
 DItemRevisionGUID=
 
@@ -400,7 +274,7 @@ OutputDir=
 [OutputGroup1]
 Name=Netlist Outputs
 Description=
-TargetPrinter=Adobe PDF
+TargetPrinter=Print to PDF (Mac Desktop)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=CadnetixNetlist
 OutputName1=Cadnetix Netlist
@@ -506,7 +380,7 @@ OutputDefault20=0
 [OutputGroup2]
 Name=Simulator Outputs
 Description=
-TargetPrinter=Adobe PDF
+TargetPrinter=Print to PDF (Mac Desktop)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 
 [OutputGroup3]
@@ -586,7 +460,7 @@ PageOptions11=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|Print
 [OutputGroup4]
 Name=Assembly Outputs
 Description=
-TargetPrinter=Adobe PDF
+TargetPrinter=Print to PDF (Mac Desktop)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=Assembly
 OutputName1=Assembly Drawings
@@ -608,7 +482,7 @@ OutputDefault3=0
 [OutputGroup5]
 Name=Fabrication Outputs
 Description=
-TargetPrinter=Adobe PDF
+TargetPrinter=Print to PDF (Mac Desktop)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=NC Drill
 OutputName1=NC Drill Files
@@ -748,7 +622,7 @@ Configuration12_Item2=AddToAllLayerClasses.Set= |AddToAllPlots.Set=SerializeLaye
 [OutputGroup6]
 Name=Report Outputs
 Description=
-TargetPrinter=Adobe PDF
+TargetPrinter=Print to PDF (Mac Desktop)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=BOM_PartType
 OutputName1=Bill of Materials
@@ -809,7 +683,7 @@ PageOptions8=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintS
 [OutputGroup7]
 Name=Other Outputs
 Description=
-TargetPrinter=Adobe PDF
+TargetPrinter=Print to PDF (Mac Desktop)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=Text Print
 OutputName1=Text Print
@@ -917,7 +791,7 @@ PageOptions17=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|Print
 [OutputGroup8]
 Name=Validation Outputs
 Description=
-TargetPrinter=Adobe PDF
+TargetPrinter=Print to PDF (Mac Desktop)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=BOM_Violations
 OutputName1=BOM Checks Report
@@ -961,7 +835,7 @@ OutputDefault7=0
 [OutputGroup9]
 Name=Export Outputs
 Description=
-TargetPrinter=Adobe PDF
+TargetPrinter=Print to PDF (Mac Desktop)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=AutoCAD dwg/dxf PCB
 OutputName1=AutoCAD dwg/dxf File PCB
@@ -1022,7 +896,7 @@ OutputDefault11=0
 [OutputGroup10]
 Name=PostProcess Outputs
 Description=
-TargetPrinter=Adobe PDF
+TargetPrinter=Print to PDF (Mac Desktop)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=Copy Files
 OutputName1=Copy Files
